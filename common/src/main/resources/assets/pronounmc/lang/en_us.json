@@ -1,0 +1,23 @@
+{
+  "pronounmc.pronoun.unspecified": "Unspecified",
+  "pronounmc.pronoun.hh": "he/him",
+  "pronounmc.pronoun.hi": "he/it",
+  "pronounmc.pronoun.hs": "he/she",
+  "pronounmc.pronoun.ht": "he/they",
+  "pronounmc.pronoun.ih": "it/him",
+  "pronounmc.pronoun.ii": "it/its",
+  "pronounmc.pronoun.is": "it/she",
+  "pronounmc.pronoun.it": "it/they",
+  "pronounmc.pronoun.shh": "she/him",
+  "pronounmc.pronoun.sh": "she/her",
+  "pronounmc.pronoun.si": "she/it",
+  "pronounmc.pronoun.st": "she/they",
+  "pronounmc.pronoun.th": "they/he",
+  "pronounmc.pronoun.ti": "they/it",
+  "pronounmc.pronoun.ts": "they/she",
+  "pronounmc.pronoun.tt": "they/them",
+  "pronounmc.pronoun.any": "any",
+  "pronounmc.pronoun.other": "other",
+  "pronounmc.pronoun.ask": "ask",
+  "pronounmc.pronoun.avoid": "avoid"
+}
