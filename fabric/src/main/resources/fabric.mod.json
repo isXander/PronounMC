@@ -14,7 +14,7 @@
     "sources": "https://github.com/W-OVERFLOW/PronounMC"
   },
   "license": "LGPLv3",
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "client": [
       "cc.woverflow.pronounmc.fabric.FabricEntrypoint"

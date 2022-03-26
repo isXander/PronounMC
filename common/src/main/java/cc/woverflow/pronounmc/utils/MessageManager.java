@@ -46,10 +46,10 @@ public class MessageManager {
      * checks if sender is a player
      */
     public boolean isMessageSentByPlayer(UUID sender) {
-        if (MinecraftClient.getInstance().world == null)
+        if (MinecraftClient.getInstance().player == null)
             return false;
 
-        return MinecraftClient.getInstance().world.getPlayerByUuid(sender) != null;
+        return MinecraftClient.getInstance().player.networkHandler.getPlayerUuids().contains(sender);
     }
 
     private record Message(Text message, UUID sender) {}

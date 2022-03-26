@@ -5,8 +5,8 @@
   "injectors": {
     "defaultRequire": 0
   },
-  "mixins": [
-    "ClientWorldMixin",
+  "client": [
+    "ClientPlayNetworkHandlerMixin",
     "InGameHudMixin"
   ]
 }

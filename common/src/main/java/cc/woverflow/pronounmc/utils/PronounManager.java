@@ -1,9 +1,11 @@
 package cc.woverflow.pronounmc.utils;
 
+import cc.woverflow.pronounmc.PronounMC;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import net.minecraft.client.MinecraftClient;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
@@ -34,7 +37,8 @@ public class PronounManager {
     }
 
     private Pronouns findPronouns(UUID uuid) throws IOException, InterruptedException {
-        URI url = URI.create("https://pronoundb.org/api/v1/lookup?platform=minecraft&id=" + uuid.toString());
+        PronounMC.getLogger().info("Fetching pronouns for " + uuid.toString());
+        URI url = URI.create("https://pronoundb.org/api/v1/lookup?platform=minecraft&id=" + uuid);
 
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder(url)
@@ -45,5 +49,11 @@ public class PronounManager {
 
         JsonObject json = gson.fromJson(response.body(), JsonObject.class);
         return Pronouns.fromId(json.get("pronouns").getAsString());
+    }
+
+    public void cachePronounsForServer() {
+        for (UUID uuid : Objects.requireNonNull(MinecraftClient.getInstance().player).networkHandler.getPlayerUuids()) {
+            getOrFindPronouns(uuid);
+        }
     }
 }

@@ -27,10 +27,13 @@ public class InGameHudMixin {
                     ((InGameHud) (Object) this).addChatMessage(null, PronounMC.getMessageManager().getPronounMessage(text, cachedPronouns), sender);
                 } else {
                     // otherwise, queue the message to be sent once calculated. (this should never happen because it's calculated on player join)
+                    PronounMC.getLogger().warn("Pronouns not cached for player " + sender.toString() + "! Queuing message to be sent after fetching.");
                     PronounMC.getMessageManager().queuePronounMessage(text, sender);
                 }
                 // cancel because we are resending the message
                 ci.cancel();
+            } else {
+                System.out.println("Message not sent by player!");
             }
         }
     }
