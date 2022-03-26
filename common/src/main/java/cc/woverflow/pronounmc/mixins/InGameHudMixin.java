@@ -1,7 +1,7 @@
 package cc.woverflow.pronounmc.mixins;
 
 import cc.woverflow.pronounmc.PronounMC;
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import cc.woverflow.pronounmc.utils.Pronouns;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.network.MessageType;
 import net.minecraft.text.Text;
@@ -21,12 +21,24 @@ public class InGameHudMixin {
 
         if (type == MessageType.CHAT) {
             if (PronounMC.getMessageManager().isMessageSentByPlayer(sender)) {
-                PronounMC.getMessageManager().queuePronounMessage(text, sender);
+                Pronouns cachedPronouns = PronounMC.getPronounManager().getCachedPronouns(sender);
+                if (cachedPronouns != null) {
+                    // avoid delaying message to next tick if already cached
+                    ((InGameHud) (Object) this).addChatMessage(null, PronounMC.getMessageManager().getPronounMessage(text, cachedPronouns), sender);
+                } else {
+                    // otherwise, queue the message to be sent once calculated. (this should never happen because it's calculated on player join)
+                    PronounMC.getMessageManager().queuePronounMessage(text, sender);
+                }
+                // cancel because we are resending the message
                 ci.cancel();
             }
         }
     }
 
+    /**
+     * mod sends modified messages as MessageType null, so it
+     * doesn't recalculate the pronouns getting into a recursive loop
+     */
     @ModifyVariable(method = "addChatMessage", at = @At("HEAD"), argsOnly = true)
     private MessageType modifyMessageType(MessageType type) {
         return type == null ? MessageType.CHAT : type;

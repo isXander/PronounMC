@@ -30,12 +30,6 @@ dependencies {
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
-
-    "com.github.llamalad7:mixinextras:0.0.+".let {
-        implementation(it)
-        annotationProcessor(it)
-        include(it)
-    }
 }
 
 tasks {

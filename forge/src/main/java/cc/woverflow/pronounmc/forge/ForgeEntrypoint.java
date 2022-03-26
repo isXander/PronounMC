@@ -14,6 +14,6 @@ public class ForgeEntrypoint {
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-        PronounMC.getMessageManager().sendMessages();
+        PronounMC.getMessageManager().sendQueuedMessages();
     }
 }

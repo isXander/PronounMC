@@ -10,7 +10,7 @@ public class FabricEntrypoint implements ClientModInitializer {
         PronounMC.onInitialize();
 
         ClientTickEvents.END_CLIENT_TICK.register((client) -> {
-            PronounMC.getMessageManager().sendMessages();
+            PronounMC.getMessageManager().sendQueuedMessages();
         });
     }
 }

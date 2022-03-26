@@ -4,6 +4,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.net.URI;
@@ -16,7 +17,7 @@ import java.util.concurrent.ExecutionException;
 
 public class PronounManager {
     private final Gson gson = new Gson();
-    private final Cache<UUID, Pronouns> pronounsCache = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofMinutes(10)).build();
+    private final Cache<UUID, Pronouns> pronounsCache = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofMinutes(10)).maximumSize(500).build();
 
     public Pronouns getOrFindPronouns(UUID uuid) {
         try {
@@ -25,6 +26,11 @@ public class PronounManager {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Nullable
+    public Pronouns getCachedPronouns(UUID uuid) {
+        return pronounsCache.getIfPresent(uuid);
     }
 
     private Pronouns findPronouns(UUID uuid) throws IOException, InterruptedException {
