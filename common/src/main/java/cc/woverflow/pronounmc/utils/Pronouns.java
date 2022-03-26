@@ -42,6 +42,6 @@ public enum Pronouns {
             }
         }
 
-        return null;
+        throw new IllegalArgumentException("No pronoun with id " + id);
     }
 }

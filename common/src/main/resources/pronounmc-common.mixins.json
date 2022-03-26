@@ -5,6 +5,7 @@
   "injectors": {
     "defaultRequire": 0
   },
+  "plugin": "cc.woverflow.pronounmc.utils.MixinPlugin",
   "mixins": [
     "InGameHudMixin"
   ]

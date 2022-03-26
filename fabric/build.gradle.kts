@@ -20,10 +20,22 @@ dependencies {
     val fabricLoaderVersion: String by rootProject
 
     modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
-    modImplementation(fabricApi.module("fabric-resource-loader-v0", "0.48.0+1.18.2"))
+
+    listOf(
+        "fabric-lifecycle-events-v1",
+        "fabric-resource-loader-v0",
+    ).forEach {
+        modImplementation(fabricApi.module(it, "0.48.0+1.18.2"))
+    }
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
+
+    "com.github.llamalad7:mixinextras:0.0.+".let {
+        implementation(it)
+        annotationProcessor(it)
+        include(it)
+    }
 }
 
 tasks {
