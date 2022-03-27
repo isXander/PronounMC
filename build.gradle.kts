@@ -48,12 +48,14 @@ allprojects {
 }
 
 tasks {
-    val publishToModrinth by registering
-    val publishToCurseforge by registering
+    val publishToModrinth by registering { group = "pronounmc" }
+    val publishToCurseforge by registering { group = "pronounmc" }
 
     register("publish") {
         dependsOn("clean")
         dependsOn(publishToModrinth)
         dependsOn(publishToCurseforge)
+
+        group = "pronounmc"
     }
 }

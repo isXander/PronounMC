@@ -85,6 +85,11 @@ modrinth {
     uploadFile.set(tasks.remapJar.get())
     gameVersions.set(listOf(minecraftVersion))
     loaders.set(listOf(project.name))
+
+    dependencies.addAll(
+        com.modrinth.minotaur.dependencies.Dependency("fabric-api", com.modrinth.minotaur.dependencies.DependencyType.REQUIRED),
+        com.modrinth.minotaur.dependencies.Dependency("modmenu", com.modrinth.minotaur.dependencies.DependencyType.OPTIONAL)
+    )
 }
 
 rootProject.tasks["publishToModrinth"].dependsOn(tasks["modrinth"])
@@ -95,6 +100,12 @@ if (hasProperty("curseforge.token")) {
         project(closureOf<com.matthewprenger.cursegradle.CurseProject> {
             mainArtifact(tasks.remapJar.get(), closureOf<com.matthewprenger.cursegradle.CurseArtifact> {
                 displayName = "[${project.name.capitalize()} $minecraftVersion] ${project.version}"
+
+                relations(closureOf<com.matthewprenger.cursegradle.CurseRelation> {
+                    requiredDependency("fabric-api")
+                    requiredDependency("cloth-config")
+                    optionalDependency("modmenu")
+                })
             })
 
             id = "599215"

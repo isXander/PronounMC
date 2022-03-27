@@ -94,6 +94,10 @@ if (hasProperty("curseforge.token")) {
         project(closureOf<com.matthewprenger.cursegradle.CurseProject> {
             mainArtifact(tasks.remapJar.get(), closureOf<com.matthewprenger.cursegradle.CurseArtifact> {
                 displayName = "[${project.name.capitalize()} $minecraftVersion] ${project.version}"
+
+                relations(closureOf<com.matthewprenger.cursegradle.CurseRelation> {
+                    requiredDependency("cloth-config")
+                })
             })
 
             id = "599215"
