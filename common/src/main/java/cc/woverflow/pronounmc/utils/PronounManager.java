@@ -3,6 +3,7 @@ package cc.woverflow.pronounmc.utils;
 import cc.woverflow.pronounmc.PronounMC;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import net.minecraft.client.MinecraftClient;
@@ -14,16 +15,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class PronounManager {
     private final Gson gson = new Gson();
     private final Cache<UUID, Pronouns> pronounsCache = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofMinutes(10)).maximumSize(500).build();
-    private final List<UUID> inProgressFetching = new CopyOnWriteArrayList<>();
+    private final Set<UUID> inProgressFetching = Sets.newConcurrentHashSet();
 
     public Pronouns getOrFindPronouns(UUID uuid) {
         if (isCurrentlyFetching(uuid))

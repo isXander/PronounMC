@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 public class PronounMC {
     private static PronounManager pronounManager;
     private static MessageManager messageManager;
-    private static Logger logger = LoggerFactory.getLogger("PronounMC");
+    private static final Logger logger = LoggerFactory.getLogger("PronounMC");
 
     public static void onInitialize() {
         AutoConfig.register(PronounConfig.class, JanksonConfigSerializer::new);

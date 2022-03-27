@@ -7,9 +7,7 @@
   },
   "client": [
     "ClientPlayNetworkHandlerMixin",
-    "InGameHudMixin"
-  ],
-  "mixins": [
+    "InGameHudMixin",
     "EntityRendererMixin"
   ]
 }
