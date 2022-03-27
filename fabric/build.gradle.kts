@@ -20,6 +20,7 @@ val shadowCommon by configurations.creating
 
 dependencies {
     val fabricLoaderVersion: String by rootProject
+    val clothVersion: String by rootProject
 
     modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
 
@@ -29,6 +30,11 @@ dependencies {
     ).forEach {
         modImplementation(fabricApi.module(it, "0.48.0+1.18.2"))
     }
+
+    modImplementation("me.shedaniel.cloth:cloth-config-fabric:$clothVersion") {
+        exclude(module = "fabric-api")
+    }
+    modImplementation("com.terraformersmc:modmenu:3.+")
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }

@@ -18,5 +18,9 @@
   "pronounmc.pronoun.any": "any",
   "pronounmc.pronoun.other": "other",
   "pronounmc.pronoun.ask": "ask",
-  "pronounmc.pronoun.avoid": "avoid"
+  "pronounmc.pronoun.avoid": "avoid",
+
+  "text.autoconfig.pronounmc.title": "PronounMC Config",
+  "text.autoconfig.pronounmc.option.showInChat": "Show In Chat",
+  "text.autoconfig.pronounmc.option.showOnNametag": "Show On Nametag"
 }

@@ -18,6 +18,9 @@
   "entrypoints": {
     "client": [
       "cc.woverflow.pronounmc.fabric.FabricEntrypoint"
+    ],
+    "modmenu": [
+      "cc.woverflow.pronounmc.fabric.ModMenuIntegration"
     ]
   },
   "mixins": [
@@ -28,6 +31,10 @@
     "minecraft": "~1.18.2",
     "java": ">=17",
     "fabric-resource-loader-v0": "*",
-    "fabric-lifecycle-events-v1": "*"
+    "fabric-lifecycle-events-v1": "*",
+    "cloth-config2": ">=6.0.0"
+  },
+  "suggests": {
+    "modmenu": ">=3.0.0"
   }
 }

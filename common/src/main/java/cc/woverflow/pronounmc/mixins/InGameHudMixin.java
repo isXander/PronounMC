@@ -1,6 +1,7 @@
 package cc.woverflow.pronounmc.mixins;
 
 import cc.woverflow.pronounmc.PronounMC;
+import cc.woverflow.pronounmc.config.PronounConfig;
 import cc.woverflow.pronounmc.utils.Pronouns;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.network.MessageType;
@@ -17,7 +18,8 @@ import java.util.UUID;
 public class InGameHudMixin {
     @Inject(method = "addChatMessage", at = @At("HEAD"), cancellable = true)
     private void onAddChatMessage(MessageType type, Text text, UUID sender, CallbackInfo ci) {
-        if (type == null) return;
+        PronounConfig config = PronounMC.getConfig();
+        if (type == null || !config.showInChat) return;
 
         if (type == MessageType.CHAT) {
             if (PronounMC.getMessageManager().isMessageSentByPlayer(sender)) {

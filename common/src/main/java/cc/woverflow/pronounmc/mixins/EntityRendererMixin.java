@@ -19,7 +19,7 @@ import java.util.UUID;
 public class EntityRendererMixin<T extends Entity> {
     @ModifyVariable(method = "renderLabelIfPresent", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;isSneaky()Z"), argsOnly = true)
     private Text modifyNametag(Text text, T entity) {
-        if (entity instanceof PlayerEntity player) {
+        if (PronounMC.getConfig().showOnNametag && entity instanceof PlayerEntity player) {
             UUID uuid = player.getGameProfile().getId();
             Pronouns pronouns = PronounMC.getPronounManager().getCachedPronouns(uuid);
 

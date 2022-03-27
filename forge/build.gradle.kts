@@ -28,8 +28,11 @@ val shadowCommon by configurations.creating
 dependencies {
     val minecraftVersion: String by rootProject
     val forgeVersion: String by rootProject
+    val clothVersion: String by rootProject
 
     forge("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
+
+    modImplementation("me.shedaniel.cloth:cloth-config-forge:$clothVersion")
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(path = ":common", configuration = "transformProductionForge")) { isTransitive = false }
