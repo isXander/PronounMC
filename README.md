@@ -17,4 +17,5 @@ Link your Minecraft account to your [PronounDB](https://pronoundb.org/) account 
 
 *Logo design by MoonTidez*
 
-![preview](https://i.imgur.com/VfJ03Vq.png)
+![chat preview](https://i.imgur.com/LrZJoKH.png)
+![nametag preview](https://i.imgur.com/h7ImLgZ.png)
