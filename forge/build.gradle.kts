@@ -96,7 +96,7 @@ if (hasProperty("curseforge.token")) {
                 displayName = "[${project.name.capitalize()} $minecraftVersion] ${project.version}"
 
                 relations(closureOf<com.matthewprenger.cursegradle.CurseRelation> {
-                    requiredDependency("cloth-config")
+                    requiredDependency("cloth-config-forge")
                 })
             })
 
