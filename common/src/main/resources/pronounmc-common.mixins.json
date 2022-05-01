@@ -8,6 +8,8 @@
   "client": [
     "ClientPlayNetworkHandlerMixin",
     "InGameHudMixin",
-    "EntityRendererMixin"
+    "EntityRendererMixin",
+    "EntityContentMixin",
+    "EntityContentAccessor"
   ]
 }

@@ -11,4 +11,7 @@ public class PronounConfig implements ConfigData {
 
     @ConfigEntry.Category("Visibility")
     public boolean showOnNametag = true;
+
+    @ConfigEntry.Category("Visibility")
+    public boolean showInTooltip = true;
 }
