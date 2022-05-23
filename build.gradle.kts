@@ -1,6 +1,6 @@
 plugins {
     id("architectury-plugin") version "3.4.+"
-    id("dev.architectury.loom") version "0.11.0.+" apply false
+    id("dev.architectury.loom") version "0.12.0.+" apply false
     id("io.github.juuxel.loom-quiltflower") version "1.+" apply false
 
     id("com.modrinth.minotaur") version "2.+" apply false
