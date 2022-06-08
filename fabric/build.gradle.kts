@@ -34,7 +34,7 @@ dependencies {
     modImplementation("me.shedaniel.cloth:cloth-config-fabric:$clothVersion") {
         exclude(module = "fabric-api")
     }
-    modImplementation("com.terraformersmc:modmenu:3.+")
+    modImplementation("com.terraformersmc:modmenu:4.+")
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
